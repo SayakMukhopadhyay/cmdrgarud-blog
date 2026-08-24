@@ -1,0 +1,40 @@
+---
+import SiteHeader from '../components/SiteHeader.astro';
+import { siteConfig } from '../config/site';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = siteConfig.description } = Astro.props;
+const documentTitle = title ? `${title} · ${siteConfig.title}` : siteConfig.title;
+---
+
+<!doctype html>
+<html lang={siteConfig.locale} style={`--accent: ${siteConfig.accentColor}`}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:title" content={documentTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={title ? 'article' : 'website'} />
+    <link rel="icon" href={siteConfig.icon} />
+    <title>{documentTitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="shell">
+      <SiteHeader />
+      <main id="main-content"><slot /></main>
+      <footer>
+        <p>Written by <a href={`/author/${siteConfig.author.slug}/`}>{siteConfig.author.name}</a>.</p>
+        <p>Statically published with no tracking or client-side JavaScript.</p>
+      </footer>
+    </div>
+  </body>
+</html>

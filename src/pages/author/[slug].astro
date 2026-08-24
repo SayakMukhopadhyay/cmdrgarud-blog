@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteConfig } from '../../config/site';
+
+export function getStaticPaths() {
+  return [{ params: { slug: siteConfig.author.slug } }];
+}
+---
+
+<BaseLayout title={siteConfig.author.name} description={siteConfig.author.bio ?? siteConfig.description}>
+  <article class="author-profile">
+    <img src={siteConfig.author.profileImage} alt={siteConfig.author.name} />
+    <div>
+      <p class="eyebrow">Author</p>
+      <h1>{siteConfig.author.name}</h1>
+      {siteConfig.author.bio && <p>{siteConfig.author.bio}</p>}
+      {siteConfig.author.location && <p>{siteConfig.author.location}</p>}
+      {siteConfig.author.website && <p><a href={siteConfig.author.website}>Website</a></p>}
+    </div>
+  </article>
+</BaseLayout>

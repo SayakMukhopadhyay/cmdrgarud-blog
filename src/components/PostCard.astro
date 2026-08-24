@@ -1,0 +1,24 @@
+---
+import { entryPath, tagPath } from '../lib/routes';
+
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  publishedAt: Date;
+  tags: string[];
+  featureImage?: string;
+}
+
+const { slug, title, description, publishedAt, tags, featureImage } = Astro.props;
+---
+
+<article class="post-card">
+  {featureImage && <a class="post-card-image" href={entryPath(slug)} tabindex="-1" aria-hidden="true"><img src={featureImage} alt="" loading="lazy" /></a>}
+  <div>
+    <time datetime={publishedAt.toISOString()}>{publishedAt.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+    <h2><a href={entryPath(slug)}>{title}</a></h2>
+    {description && <p>{description}</p>}
+    {tags.length > 0 && <ul class="tag-list" aria-label="Tags">{tags.map((tag) => <li><a href={tagPath(tag)}>#{tag}</a></li>)}</ul>}
+  </div>
+</article>

@@ -1,0 +1,17 @@
+---
+interface Props {
+  src: string;
+  caption?: string;
+  links?: Array<{ label: string; href: string }>;
+}
+
+const { src, caption, links = [] } = Astro.props;
+---
+
+<figure class="feature-figure">
+  <img class="feature-image" src={src} alt="" />
+  {(caption || links.length > 0) && <figcaption>
+    {caption}
+    {links.length > 0 && <span class="caption-links">{links.map((link, index) => <>{index > 0 && ' · '}<a href={link.href}>{link.label}</a></>)}</span>}
+  </figcaption>}
+</figure>
