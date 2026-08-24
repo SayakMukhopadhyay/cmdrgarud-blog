@@ -1,17 +1,9 @@
 ---
-interface Props {
-  src: string;
-  caption?: string;
-  links?: Array<{ label: string; href: string }>;
-}
-
-const { src, caption, links = [] } = Astro.props;
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import ImageCredit from './ImageCredit.astro';
+type Hero = NonNullable<CollectionEntry<'blog'>['data']['hero']>;
+interface Props { hero: Hero; }
+const { hero } = Astro.props;
 ---
-
-<figure class="feature-figure">
-  <img class="feature-image" src={src} alt="" />
-  {(caption || links.length > 0) && <figcaption>
-    {caption}
-    {links.length > 0 && <span class="caption-links">{links.map((link, index) => <>{index > 0 && ' · '}<a href={link.href}>{link.label}</a></>)}</span>}
-  </figcaption>}
-</figure>
+<figure class="feature-figure"><Image class="feature-image" src={hero.image} alt={hero.alt} widths={[640, 960, 1280]} sizes="(max-width: 820px) 100vw, 820px" />{(hero.caption || hero.credit) && <figcaption>{hero.caption && <span>{hero.caption}</span>}{hero.credit && <ImageCredit credit={hero.credit} />}</figcaption>}</figure>

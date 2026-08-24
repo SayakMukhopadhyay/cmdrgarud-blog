@@ -1,27 +1,9 @@
 ---
-import { siteConfig } from '../config/site';
-import type { NavigationItem } from '../config/types';
-import { entryPath } from '../lib/routes';
-
+import { Image } from 'astro:assets';
+import { siteConfig } from '../site';
 const currentPath = Astro.url.pathname;
-const hrefFor = (item: NavigationItem) => typeof item.pageSlug === 'string' ? entryPath(item.pageSlug) : item.href;
 ---
-
 <header class="site-header">
-  <a class="brand" href="/" aria-label={`${siteConfig.title} home`}>
-    <img src={siteConfig.logo} alt="" width="52" height="52" />
-    <span>
-      <strong>{siteConfig.title}</strong>
-      <small>{siteConfig.description}</small>
-    </span>
-  </a>
-  <nav aria-label="Primary navigation">
-    <ul>
-      {siteConfig.navigation.map((item) => {
-        const href = hrefFor(item);
-        const external = href.startsWith('http');
-        return <li><a href={href} aria-current={!external && currentPath === href ? 'page' : undefined}>{item.label}</a></li>;
-      })}
-    </ul>
-  </nav>
+  <a class="brand" href="/" aria-label={`${siteConfig.title} home`}><Image src={siteConfig.logo} alt="" width={52} height={52} /><span><strong>{siteConfig.title}</strong><small>{siteConfig.description}</small></span></a>
+  <nav aria-label="Primary navigation"><ul>{siteConfig.navigation.map((item) => { const external = item.href.startsWith('http'); return <li><a href={item.href} aria-current={!external && currentPath === item.href ? 'page' : undefined}>{item.label}</a></li>; })}</ul></nav>
 </header>

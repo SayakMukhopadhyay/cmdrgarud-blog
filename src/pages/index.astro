@@ -1,29 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
+import ImageCredit from '../components/ImageCredit.astro';
 import PostCard from '../components/PostCard.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { siteConfig } from '../config/site';
+import { siteConfig } from '../site';
 import { authorPath } from '../lib/routes';
-
-const posts = (await getCollection('posts', ({ data }) => !data.draft))
-  .sort((a, b) => (b.data.publishedAt?.getTime() ?? 0) - (a.data.publishedAt?.getTime() ?? 0));
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort((a, b) => (b.data.pubDate?.getTime() ?? 0) - (a.data.pubDate?.getTime() ?? 0));
 ---
-
-<BaseLayout>
-  <section class="hero">
-    <div>
-      <p class="eyebrow">{siteConfig.author.location}</p>
-      <h1>{siteConfig.title}</h1>
-      <p>{siteConfig.description}</p>
-      {siteConfig.author.bio && <p class="hero-bio">{siteConfig.author.bio} <a href={authorPath()}>About the author</a></p>}
-    </div>
-    <img src={siteConfig.coverImage} alt="" />
-  </section>
-
-  <section aria-labelledby="latest-posts">
-    <h2 class="section-title" id="latest-posts">Latest writing</h2>
-    <div class="post-list">
-      {posts.map((post) => post.data.publishedAt && <PostCard slug={post.id} title={post.data.title} description={post.data.description} publishedAt={post.data.publishedAt} tags={post.data.tags} featureImage={post.data.featureImage} />)}
-    </div>
-  </section>
-</BaseLayout>
+<BaseLayout><section class="hero"><div><p class="eyebrow">{siteConfig.author.location}</p><h1>{siteConfig.title}</h1><p>{siteConfig.description}</p>{siteConfig.author.bio && <p class="hero-bio">{siteConfig.author.bio} <a href={authorPath()}>About the author</a></p>}</div><figure><Image src={siteConfig.cover.image} alt={siteConfig.cover.alt} widths={[640, 960]} sizes="(max-width: 760px) 100vw, 42vw" />{siteConfig.cover.credit && <figcaption><ImageCredit credit={siteConfig.cover.credit} /></figcaption>}</figure></section><section aria-labelledby="latest-posts"><h2 class="section-title" id="latest-posts">Latest writing</h2><div class="post-list">{posts.map((post) => <PostCard post={post} />)}</div></section></BaseLayout>

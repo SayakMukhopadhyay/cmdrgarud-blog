@@ -1,24 +1,11 @@
 ---
-import { entryPath, tagPath } from '../lib/routes';
-
-interface Props {
-  slug: string;
-  title: string;
-  description: string;
-  publishedAt: Date;
-  tags: string[];
-  featureImage?: string;
-}
-
-const { slug, title, description, publishedAt, tags, featureImage } = Astro.props;
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+import { postPath, tagLabel, tagPath } from '../lib/routes';
+interface Props { post: CollectionEntry<'blog'>; }
+const { post } = Astro.props;
+const { title, description, pubDate, tags, hero } = post.data;
+if (!pubDate) throw new Error(`Published post ${post.id} has no pubDate`);
 ---
-
-<article class="post-card">
-  {featureImage && <a class="post-card-image" href={entryPath(slug)} tabindex="-1" aria-hidden="true"><img src={featureImage} alt="" loading="lazy" /></a>}
-  <div>
-    <time datetime={publishedAt.toISOString()}>{publishedAt.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-    <h2><a href={entryPath(slug)}>{title}</a></h2>
-    {description && <p>{description}</p>}
-    {tags.length > 0 && <ul class="tag-list" aria-label="Tags">{tags.map((tag) => <li><a href={tagPath(tag)}>#{tag}</a></li>)}</ul>}
-  </div>
-</article>
+<article class="post-card">{hero && <a class="post-card-image" href={postPath(post.id)} tabindex="-1" aria-hidden="true"><Image src={hero.image} alt="" widths={[320, 480]} sizes="208px" loading="lazy" /></a>}<div><FormattedDate date={pubDate} /><h2><a href={postPath(post.id)}>{title}</a></h2>{description && <p>{description}</p>}{tags.length > 0 && <ul class="tag-list" aria-label="Tags">{tags.map((tag) => <li><a href={tagPath(tag)}>#{tagLabel(tag)}</a></li>)}</ul>}</div></article>

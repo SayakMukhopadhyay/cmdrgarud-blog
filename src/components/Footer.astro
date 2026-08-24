@@ -1,0 +1,5 @@
+---
+import { siteConfig } from '../site';
+import { authorPath } from '../lib/routes';
+---
+<footer><p>Written by <a href={authorPath()}>{siteConfig.author.name}</a>.</p><p>Statically published with no tracking or client-side JavaScript.</p></footer>

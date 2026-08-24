@@ -1,0 +1,8 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+interface Frontmatter { title: string; description: string; updatedDate?: string | Date; }
+const { frontmatter } = Astro.props as { frontmatter: Frontmatter };
+const updatedDate = frontmatter.updatedDate ? new Date(frontmatter.updatedDate) : undefined;
+---
+<BaseLayout title={frontmatter.title} description={frontmatter.description} updatedDate={updatedDate}><article class="article"><header class="article-header"><h1>{frontmatter.title}</h1>{updatedDate && <p class="updated-date">Updated <FormattedDate date={updatedDate} /></p>}</header><div class="prose"><slot /></div></article></BaseLayout>

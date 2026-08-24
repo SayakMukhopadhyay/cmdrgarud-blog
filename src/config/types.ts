@@ -1,32 +1,21 @@
-export type RoutePolicy = 'legacy-root';
+import type { ImageMetadata } from 'astro';
 
-export type NavigationItem =
-  | { label: string; href: string; pageSlug?: never }
-  | { label: string; pageSlug: string; href?: never };
+export interface ImageCredit {
+  kind: 'photo' | 'screenshot' | 'artwork';
+  creator: string;
+  creatorUrl?: string;
+  provider?: string;
+  providerUrl?: string;
+  sourcePageUrl?: string;
+  originalAssetUrl?: string;
+  licenseUrl?: string;
+}
 
+export interface SiteImage { image: ImageMetadata; alt: string; credit?: ImageCredit; }
+export interface NavigationItem { label: string; href: string; }
 export interface SiteConfig {
-  directory: string;
-  title: string;
-  description: string;
-  locale: string;
-  timezone: string;
-  accentColor: string;
-  logo: string;
-  icon: string;
-  coverImage: string;
-  deploymentOrigin: string | null;
-  routePolicy: RoutePolicy;
-  author: {
-    name: string;
-    slug: string;
-    bio: string | null;
-    location: string | null;
-    profileImage: string;
-    coverImage: string | null;
-    website: string | null;
-    twitter: string | null;
-  };
-  navigation: NavigationItem[];
-  additionalFiles: string[];
-  forceDraftPages: string[];
+  title: string; description: string; locale: string; timezone: string; accentColor: string;
+  logo: ImageMetadata; cover: SiteImage;
+  author: { name: string; slug: string; bio: string | null; location: string | null; profileImage: ImageMetadata; profileAlt: string; profileCredit?: ImageCredit; website: string | null; };
+  navigation: readonly NavigationItem[]; tagLabels: Readonly<Record<string, string>>;
 }
