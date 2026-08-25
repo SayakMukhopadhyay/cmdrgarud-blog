@@ -2,13 +2,11 @@
 
 This is the maintained provenance inventory for media used by this site. Paths identify repository files. Each creator and source statement describes the asset itself; it does not grant rights in third-party material depicted by an asset or any reuse rights beyond the applicable license or permission.
 
-## Original photographs
-
-No assets are currently recorded in this category.
-
 ## Original artwork and branding
 
-No assets are currently recorded in this category.
+| Local asset | Creator | Kind and source |
+| --- | --- | --- |
+| `src/assets/site/logo.png` | Sayak Mukhopadhyay | Original site branding |
 
 ## Game screenshots
 
@@ -53,10 +51,6 @@ No assets are currently recorded in this category.
 | `src/assets/site/author.png` | Sayak Mukhopadhyay | Screenshot captured in [*Elite Dangerous*](https://www.elitedangerous.com/) |
 | `src/assets/site/cover.png` | Sayak Mukhopadhyay | Screenshot captured in [*Elite Dangerous*](https://www.elitedangerous.com/) |
 
-## Software and development screenshots
-
-No assets are currently recorded in this category.
-
 ## Community-provided media
 
 | Local asset | Creator | Kind and source |
@@ -75,15 +69,3 @@ No assets are currently recorded in this category.
 ## Unsplash photographs
 
 No assets are currently recorded in this category.
-
-## Unresolved provenance
-
-The sanitized migration source did not record a creator or original source for these files. They remain listed here so their provenance is not silently assumed.
-
-| Local asset | Creator | Kind and source |
-| --- | --- | --- |
-| `src/assets/site/logo.png` | Not recorded | Site branding |
-
-## Maintenance
-
-Update this inventory whenever media is added, replaced, or removed. Exact remote source URLs, where available, remain stored with the corresponding site configuration or Markdown frontmatter. See [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) for the repository's media-rights policy.

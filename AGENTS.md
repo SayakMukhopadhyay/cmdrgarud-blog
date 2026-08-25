@@ -8,6 +8,10 @@ npm run astro -- dev --background
 
 Manage it with `npm run astro -- dev stop`, `npm run astro -- dev status`, and `npm run astro -- dev logs`.
 
+## Asset provenance
+
+Update `ASSET-CREDITS.md` whenever image media is added, replaced, or removed. Record each image asset exactly once with its creator and source; do not infer missing provenance. Keep exact remote source URLs, where available, in the corresponding site configuration or Markdown frontmatter. Consult `THIRD-PARTY-NOTICES.md` for the repository's media-rights policy.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build
