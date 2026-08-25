@@ -1,6 +1,13 @@
 # Asset credits
 
-This is the maintained provenance inventory for community-provided and separately licensed media used by the site. Update this file when such assets are added, replaced, or removed. The credits below do not grant additional permission to reuse the listed assets.
+This is the maintained provenance inventory for attributed media used by the site. Update this file when such assets are added, replaced, or removed. The credits below do not grant additional permission to reuse the listed assets.
+
+## Sayak-captured screenshots
+
+| Local asset | Creator | Kind and source |
+| --- | --- | --- |
+| `src/assets/site/cover.png` | Sayak Mukhopadhyay | Screenshot captured in [*Elite Dangerous*](https://www.elitedangerous.com/) |
+| `src/assets/site/author.png` | Sayak Mukhopadhyay | Screenshot captured in [*Elite Dangerous*](https://www.elitedangerous.com/) |
 
 ## Community-provided images
 
