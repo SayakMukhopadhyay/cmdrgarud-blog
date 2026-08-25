@@ -1,19 +1,20 @@
 # cmdrgarud.blog
 
-Deployment repository for [cmdrgarud.blog](https://cmdrgarud.blog).
+Artifact-only GitHub Pages deployment repository for [cmdrgarud.blog](https://cmdrgarud.blog).
 
-The authoritative Astro source is [`apps/cmdrgarud-blog`](https://github.com/SayakMukhopadhyay/blogs/tree/main/apps/cmdrgarud-blog) in the Blogs monorepo. GitHub Actions builds that application there and commits the generated production output to `site/` in this repository. Do not edit files under `site/` manually; those changes will be replaced by the next source deployment.
+The authoritative Astro source is [`apps/cmdrgarud-blog`](https://github.com/SayakMukhopadhyay/blogs/tree/main/apps/cmdrgarud-blog) in the Blogs monorepo. This repository stores neither application source nor generated site output.
 
 ## Deployment
 
-A push to `main` that changes `site/` triggers the GitHub Pages workflow. The workflow packages the committed static files and deploys them without installing dependencies or rebuilding the application.
+The Blogs monorepo validates and builds the application once, uploads `site-cmdrgarud-blog` as an immutable workflow artifact, and dispatches this repository's deployment workflow with the exact source workflow run ID.
 
-The custom domain is configured in this repository's GitHub Pages settings. A `CNAME` file is not used by the custom Actions workflow.
+The destination workflow downloads that fixed artifact from `SayakMukhopadhyay/blogs`, validates it, repackages it as a GitHub Pages artifact, and deploys it without checking out this repository, installing dependencies, rebuilding Astro, committing, or pushing.
+
+A manual deployment requires the source Blogs workflow run ID. The corresponding source artifact must still be within its retention period.
+
+The custom domain is configured in this repository's GitHub Pages settings. A `CNAME` file and deployment branch are not used.
 
 ## Licensing
 
-This repository deliberately separates software, written content, and media rights:
-
-- Original software and generated software portions are available under the [MIT License](LICENSE-CODE.md).
-- Original written content is available under [CC BY-NC-ND 4.0](LICENSE-CONTENT.md).
-- Images, artwork, branding, and third-party material are excluded from those grants. Legal boundaries are documented in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md), with per-asset provenance in [ASSET-CREDITS.md](ASSET-CREDITS.md).
+- The workflow and repository documentation are available under the [MIT License](LICENSE-CODE.md).
+- The deployed application's software, written-content license, media-rights notice, and asset provenance are maintained in the [Blogs monorepo](https://github.com/SayakMukhopadhyay/blogs).

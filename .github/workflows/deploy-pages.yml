@@ -1,13 +1,19 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - site/**
-      - .github/workflows/deploy-pages.yml
+  repository_dispatch:
+    types:
+      - deploy-pages
   workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: Source blogs workflow run ID
+        required: true
+        type: string
+      source_sha:
+        description: Source blogs commit SHA for traceability
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -19,6 +25,13 @@ concurrency:
 jobs:
   deploy:
     name: Deploy
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (
+        github.event.client_payload.app == 'cmdrgarud-blog' &&
+        github.event.client_payload.artifact_name == 'site-cmdrgarud-blog' &&
+        github.event.client_payload.source_repository == 'SayakMukhopadhyay/blogs'
+      )
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
@@ -28,14 +41,44 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      SOURCE_REPOSITORY: SayakMukhopadhyay/blogs
+      SOURCE_RUN_ID: ${{ github.event_name == 'repository_dispatch' && github.event.client_payload.source_run_id || inputs.source_run_id }}
+      SOURCE_SHA: ${{ github.event_name == 'repository_dispatch' && github.event.client_payload.source_sha || inputs.source_sha }}
 
     steps:
-      - name: Check out generated site
-        uses: actions/checkout@v7
+      - name: Create source artifact token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ vars.BLOGS_PUBLISHER_CLIENT_ID }}
+          private-key: ${{ secrets.BLOGS_PUBLISHER_PRIVATE_KEY }}
+          owner: SayakMukhopadhyay
+          repositories: blogs
+          permission-actions: read
+
+      - name: Download generated site
+        uses: actions/download-artifact@v8
+        with:
+          name: site-cmdrgarud-blog
+          path: site
+          github-token: ${{ steps.app-token.outputs.token }}
+          repository: ${{ env.SOURCE_REPOSITORY }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+          digest-mismatch: error
 
       - name: Validate generated site
         shell: bash
-        run: test -f site/index.html
+        run: |
+          test -n "$SOURCE_RUN_ID"
+          test -f site/index.html
+
+          if find site -type l -print -quit | grep -q .; then
+            echo "Generated output must not contain symbolic links." >&2
+            exit 1
+          fi
+
+          echo "Deploying cmdrgarud-blog from ${SOURCE_REPOSITORY}@${SOURCE_SHA} (run ${SOURCE_RUN_ID})."
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v6
