@@ -4,7 +4,7 @@ The software and written-content licenses in this repository do not relicense th
 
 ## Asset records
 
-The repository's maintained inventory of community-provided and separately licensed media, including creator details, is in [ASSET-CREDITS.md](ASSET-CREDITS.md). The inventory documents provenance and attribution; it does not grant additional rights to an asset. The accompanying article captions or feature-image metadata preserve visible creator credits.
+The repository's maintained inventory of community-provided media, screenshots, original artwork, and separately licensed media, including creator and source details, is in [ASSET-CREDITS.md](ASSET-CREDITS.md). The inventory documents provenance and attribution; it does not grant additional rights to an asset. The corresponding article captions, site configuration, or Markdown frontmatter preserve visible creator credits where applicable.
 
 ## Media ownership
 
@@ -14,7 +14,7 @@ Community-provided media remains subject to the rights and permissions of its re
 
 ## Third-party material and trademarks
 
-Screenshots and imagery depicting *Elite Dangerous* contain or may contain game assets and other material owned by third parties. Their inclusion does not grant additional rights in the underlying game, trademarks, or other depicted works.
+Screenshots and imagery depicting third-party games or other works may contain game assets and other material owned by third parties. Their inclusion does not grant additional rights in the underlying games, trademarks, or other depicted works.
 
 All product names, trademarks, and registered trademarks remain the property of their respective owners.
 
