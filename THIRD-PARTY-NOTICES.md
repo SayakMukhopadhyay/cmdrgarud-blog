@@ -18,6 +18,10 @@ Screenshots and imagery depicting third-party games or other works may contain g
 
 All product names, trademarks, and registered trademarks remain the property of their respective owners.
 
+## Fonts
+
+The bundled Atkinson Hyperlegible regular and bold font files are Copyright 2020 Braille Institute of America, Inc. and are distributed under the SIL Open Font License, Version 1.1. See [LICENSE-FONT.md](LICENSE-FONT.md).
+
 ## Dependencies
 
 Third-party packages referenced by `package.json` and `package-lock.json` remain subject to the licenses selected by their respective copyright holders.

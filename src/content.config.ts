@@ -9,7 +9,8 @@ const credit = z.object({
 }).strict();
 
 const blog = defineCollection({
-  loader: glob({ base: './src/content/blog', pattern: '**/*.md' }),
+  // Load Markdown and MDX files in the `src/content/blog/` directory.
+  loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
   schema: ({ image }) => z.object({
     title: z.string().min(1), description: z.string().min(1), pubDate: z.coerce.date().optional(), updatedDate: z.coerce.date().optional(),
     draft: z.boolean().default(false), tags: z.array(z.string().min(1)).default([]),
