@@ -9,7 +9,7 @@ Astro-native static successor to the former Ghost site. Content is validated Mar
 - `npm run check` — run Astro and TypeScript diagnostics
 - `npm run build` — run diagnostics and create the static production build
 
-Canonical URLs, RSS, sitemap generation, and a GitHub Pages deployment workflow are configured for the production domain.
+Canonical URLs, RSS, sitemap generation, and separate GitHub Actions build and Pages deployment workflows are configured for the production domain. The deployment workflow publishes the artifact produced by the successful main-branch build without rebuilding the site.
 
 ## Licensing
 
