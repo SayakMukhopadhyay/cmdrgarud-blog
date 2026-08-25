@@ -2,15 +2,9 @@
 
 The software and written-content licenses in this repository do not relicense third-party material or media.
 
-## Community-provided images
+## Asset records
 
-The following images were provided by members of the Elite Dangerous community and remain excluded from the repository's MIT and Creative Commons licenses:
-
-- `src/assets/blog/knights-of-karma-inra-expedition/Snapshot_-_9.png` — image by CMDR Lyxavier.
-- `src/assets/blog/the-return-of-the-knights/roudybeest-colonia-1.png` — image by CMDR Roudybeest.
-- `src/assets/blog/reclaiming-what-is-ours/hero.png` — screenshot by CMDR Robert Trebor.
-
-The accompanying article captions or feature-image metadata preserve the supplied creator credits. No additional permission to reuse these images is granted by this repository.
+The repository's maintained inventory of community-provided and separately licensed media, including creator details, is in [ASSET-CREDITS.md](ASSET-CREDITS.md). The accompanying article captions or feature-image metadata preserve visible creator credits. No additional permission to reuse these images is granted by this repository.
 
 ## Other media and game material
 

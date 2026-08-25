@@ -17,4 +17,4 @@ This repository deliberately separates software, written content, and media righ
 
 - Original software and configuration are available under the [MIT License](LICENSE-CODE.md).
 - Original written content is available under [CC BY-NC-ND 4.0](LICENSE-CONTENT.md).
-- Images, artwork, branding, and third-party material are excluded from those grants and documented in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+- Images, artwork, branding, and third-party material are excluded from those grants. Legal boundaries are documented in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md), with per-asset provenance in [ASSET-CREDITS.md](ASSET-CREDITS.md).
