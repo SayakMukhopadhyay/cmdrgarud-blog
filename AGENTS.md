@@ -12,7 +12,7 @@ The deployment workflow must:
 
 - accept only the fixed `site-cmdrgarud-blog` artifact from `SayakMukhopadhyay/blogs`;
 - use the dispatched source workflow run ID;
-- download through a short-lived GitHub App token limited to Actions read on the source repository;
+- use the `BLOGS_PUBLISHER_TOKEN` fine-grained personal access token only to download the source artifact;
 - validate and repackage the artifact with official GitHub-maintained actions;
 - deploy with the repository-scoped Pages and OIDC permissions;
 - never install dependencies, build Astro, commit, or push.

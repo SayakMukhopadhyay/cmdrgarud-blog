@@ -47,22 +47,12 @@ jobs:
       SOURCE_SHA: ${{ github.event_name == 'repository_dispatch' && github.event.client_payload.source_sha || inputs.source_sha }}
 
     steps:
-      - name: Create source artifact token
-        id: app-token
-        uses: actions/create-github-app-token@v3
-        with:
-          client-id: ${{ vars.BLOGS_PUBLISHER_CLIENT_ID }}
-          private-key: ${{ secrets.BLOGS_PUBLISHER_PRIVATE_KEY }}
-          owner: SayakMukhopadhyay
-          repositories: blogs
-          permission-actions: read
-
       - name: Download generated site
         uses: actions/download-artifact@v8
         with:
           name: site-cmdrgarud-blog
           path: site
-          github-token: ${{ steps.app-token.outputs.token }}
+          github-token: ${{ secrets.BLOGS_PUBLISHER_TOKEN }}
           repository: ${{ env.SOURCE_REPOSITORY }}
           run-id: ${{ env.SOURCE_RUN_ID }}
           digest-mismatch: error
