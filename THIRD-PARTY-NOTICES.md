@@ -4,13 +4,19 @@ The software and written-content licenses in this repository do not relicense th
 
 ## Asset records
 
-The repository's maintained inventory of community-provided and separately licensed media, including creator details, is in [ASSET-CREDITS.md](ASSET-CREDITS.md). The accompanying article captions or feature-image metadata preserve visible creator credits. No additional permission to reuse these images is granted by this repository.
+The repository's maintained inventory of community-provided and separately licensed media, including creator details, is in [ASSET-CREDITS.md](ASSET-CREDITS.md). The inventory documents provenance and attribution; it does not grant additional rights to an asset. The accompanying article captions or feature-image metadata preserve visible creator credits.
 
-## Other media and game material
+## Media ownership
 
 Logos, branding, profile images, original artwork, and other media are not covered by the MIT or Creative Commons licenses. Where Sayak Mukhopadhyay owns the applicable rights, all rights are reserved.
 
-Screenshots and imagery depicting Elite Dangerous contain or may contain game assets and other material owned by third parties. Their inclusion does not grant rights in the underlying game, trademarks, or other depicted works. All product names, trademarks, and registered trademarks remain the property of their respective owners.
+Community-provided media remains subject to the rights and permissions of its respective creators and is not relicensed by this repository.
+
+## Third-party material and trademarks
+
+Screenshots and imagery depicting *Elite Dangerous* contain or may contain game assets and other material owned by third parties. Their inclusion does not grant additional rights in the underlying game, trademarks, or other depicted works.
+
+All product names, trademarks, and registered trademarks remain the property of their respective owners.
 
 ## Dependencies
 
