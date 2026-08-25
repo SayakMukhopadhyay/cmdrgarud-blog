@@ -1,26 +1,13 @@
-## Development
+## Repository role
 
-Use npm for dependency management and scripts. When starting the development server for automated work, use Astro's background mode through npm:
+This repository is the generated-output GitHub Pages destination for `cmdrgarud.blog`. The authoritative source is [`apps/cmdrgarud-blog`](https://github.com/SayakMukhopadhyay/blogs/tree/main/apps/cmdrgarud-blog) in the Blogs monorepo.
 
-```
-npm run astro -- dev --background
-```
+Do not edit files under `site/` manually. They are generated and replaced by the source monorepo's deployment workflow. Make application, content, layout, style, asset, and canonical-URL changes in the source monorepo.
 
-Manage it with `npm run astro -- dev stop`, `npm run astro -- dev status`, and `npm run astro -- dev logs`.
+## Destination maintenance
 
-## Asset provenance
+Changes here are limited to destination-specific repository documentation, licensing mirrors, and the GitHub Pages deployment workflow. The destination workflow packages `site/`; it must not install dependencies or build the Astro application.
 
-Update `ASSET-CREDITS.md` whenever image media is added, replaced, or removed. Record each image asset exactly once with its creator and source; do not infer missing provenance. Keep exact remote source URLs, where available, in the corresponding site configuration or Markdown frontmatter. Consult `THIRD-PARTY-NOTICES.md` for the repository's media-rights policy.
+Preserve `ASSET-CREDITS.md`, all `LICENSE-*.md` files, and `THIRD-PARTY-NOTICES.md`. Update their authoritative copies in the source monorepo first, then synchronize the corresponding destination copies.
 
-## Documentation
-
-Full documentation: https://docs.astro.build
-
-Consult these guides before working on related tasks:
-
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+The custom domain is managed through this repository's GitHub Pages settings. Do not add a `CNAME` file to `site/` for the custom Actions publishing workflow.

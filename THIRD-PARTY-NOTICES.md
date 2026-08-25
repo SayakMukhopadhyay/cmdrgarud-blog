@@ -4,7 +4,7 @@ The software and written-content licenses in this repository do not relicense th
 
 ## Asset records
 
-The repository's maintained inventory of community-provided media, screenshots, original artwork, and separately licensed media, including creator and source details, is in [ASSET-CREDITS.md](ASSET-CREDITS.md). The inventory documents provenance and attribution; it does not grant additional rights to an asset. The corresponding article captions, site configuration, or Markdown frontmatter preserve visible creator credits where applicable.
+This destination mirrors the authoritative source inventory of community-provided media, screenshots, original artwork, and separately licensed media, including creator and source details, in [ASSET-CREDITS.md](ASSET-CREDITS.md). The inventory documents provenance and attribution; it does not grant additional rights to an asset. The corresponding article captions, site configuration, or Markdown frontmatter preserve visible creator credits where applicable.
 
 ## Media ownership
 
@@ -24,4 +24,4 @@ The bundled Atkinson Hyperlegible regular and bold font files are Copyright 2020
 
 ## Dependencies
 
-Third-party packages referenced by `package.json` and `package-lock.json` remain subject to the licenses selected by their respective copyright holders.
+Third-party packages referenced by [`apps/cmdrgarud-blog/package.json`](https://github.com/SayakMukhopadhyay/blogs/blob/main/apps/cmdrgarud-blog/package.json) and the source monorepo lockfile remain subject to the licenses selected by their respective copyright holders.

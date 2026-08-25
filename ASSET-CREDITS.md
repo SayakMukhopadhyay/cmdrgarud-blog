@@ -1,6 +1,6 @@
 # Asset credits
 
-This is the maintained provenance inventory for media used by this site. Paths identify repository files. Each creator and source statement describes the asset itself; it does not grant rights in third-party material depicted by an asset or any reuse rights beyond the applicable license or permission.
+This is the maintained provenance inventory for media used by this site. Paths identify authoritative source files relative to [`apps/cmdrgarud-blog`](https://github.com/SayakMukhopadhyay/blogs/tree/main/apps/cmdrgarud-blog); generated copies under `site/` may use transformed or hashed filenames. Each creator and source statement describes the asset itself; it does not grant rights in third-party material depicted by an asset or any reuse rights beyond the applicable license or permission.
 
 ## Original artwork and branding
 

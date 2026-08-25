@@ -1,13 +1,13 @@
 name: Deploy to GitHub Pages
 
 on:
-  workflow_run:
-    workflows:
-      - Build
-    types:
-      - completed
+  push:
     branches:
       - main
+    paths:
+      - site/**
+      - .github/workflows/deploy-pages.yml
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -17,39 +17,12 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  prepare:
-    name: Prepare Pages artifact
-    if: ${{ github.event.workflow_run.conclusion == 'success' && (github.event.workflow_run.event == 'push' || github.event.workflow_run.event == 'workflow_dispatch') }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    permissions:
-      actions: read
-      contents: read
-
-    steps:
-      - name: Download built site
-        uses: actions/download-artifact@v8
-        with:
-          name: site-dist
-          path: ./dist
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          run-id: ${{ github.event.workflow_run.id }}
-
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v6
-
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: ./dist
-          include-hidden-files: true
-
   deploy:
     name: Deploy
-    needs: prepare
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
+      contents: read
       pages: write
       id-token: write
     environment:
@@ -57,6 +30,22 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - name: Check out generated site
+        uses: actions/checkout@v7
+
+      - name: Validate generated site
+        shell: bash
+        run: test -f site/index.html
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ./site
+          include-hidden-files: true
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5

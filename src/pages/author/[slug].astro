@@ -1,8 +1,0 @@
----
-import { Image } from 'astro:assets';
-import ImageCredit from '../../components/ImageCredit.astro';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { siteConfig } from '../../site';
-export function getStaticPaths() { return [{ params: { slug: siteConfig.author.slug } }]; }
----
-<BaseLayout title={siteConfig.author.name} description={siteConfig.author.bio ?? siteConfig.description} image={siteConfig.author.profileImage}><article class="author-profile"><figure><Image src={siteConfig.author.profileImage} alt={siteConfig.author.profileAlt} width={320} height={320} />{siteConfig.author.profileCredit && <figcaption><ImageCredit credit={siteConfig.author.profileCredit} /></figcaption>}</figure><div><p class="eyebrow">Author</p><h1>{siteConfig.author.name}</h1>{siteConfig.author.bio && <p>{siteConfig.author.bio}</p>}{siteConfig.author.location && <p>{siteConfig.author.location}</p>}{siteConfig.author.website && <p><a href={siteConfig.author.website}>Website</a></p>}</div></article></BaseLayout>

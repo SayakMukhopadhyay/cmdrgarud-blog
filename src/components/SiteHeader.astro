@@ -1,9 +1,0 @@
----
-import { Image } from 'astro:assets';
-import { siteConfig } from '../site';
-const currentPath = Astro.url.pathname;
----
-<header class="site-header">
-  <a class="brand" href="/" aria-label={`${siteConfig.title} home`}><Image src={siteConfig.logo} alt="" width={52} height={52} /><span><strong>{siteConfig.title}</strong><small>{siteConfig.description}</small></span></a>
-  <nav aria-label="Primary navigation"><ul>{siteConfig.navigation.map((item) => { const external = item.href.startsWith('http'); return <li><a href={item.href} aria-current={!external && currentPath === item.href ? 'page' : undefined}>{item.label}</a></li>; })}</ul></nav>
-</header>

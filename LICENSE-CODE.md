@@ -1,6 +1,6 @@
 # Software license
 
-The MIT License below applies to the original software source code, style sheets, configuration, CI workflow, and project documentation in this repository.
+The MIT License below applies to the original software source code, style sheets, configuration, CI workflows, and project documentation maintained in the authoritative [`apps/cmdrgarud-blog`](https://github.com/SayakMukhopadhyay/blogs/tree/main/apps/cmdrgarud-blog) source, as well as generated software portions committed under `site/` in this repository.
 
 It does not apply to written blog content, archived material, images, artwork, branding, downloadable documents, or other media. Those materials are covered by [LICENSE-CONTENT.md](LICENSE-CONTENT.md) and [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
 

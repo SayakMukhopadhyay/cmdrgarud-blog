@@ -13,6 +13,10 @@
 *.ico binary
 *.jpg binary
 *.jpeg binary
+*.gif binary
 *.pdf binary
 *.png binary
+*.woff binary
+*.woff2 binary
+*.webp binary
 *.svg text eol=lf
