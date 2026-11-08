@@ -1,0 +1,52 @@
+name: Deploy to GitHub Pages
+
+on:
+  repository_dispatch:
+    types:
+      - deploy-pages
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: Source blogs workflow run ID
+        required: true
+        type: string
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (
+        github.event.client_payload.artifact_name == 'site-cmdrgarud-blog' &&
+        github.event.client_payload.source_repository == 'SayakMukhopadhyay/blogs' &&
+        github.event.client_payload.source_run_id != ''
+      )
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: read
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs['page-url'] }}
+    env:
+      SOURCE_REPOSITORY: SayakMukhopadhyay/blogs
+      SOURCE_RUN_ID: ${{ github.event_name == 'repository_dispatch' && github.event.client_payload.source_run_id || inputs.source_run_id }}
+
+    steps:
+      - name: Deploy generated site
+        id: deployment
+        uses: SayakMukhopadhyay/github-actions/deploy-pages-artifact@v1
+        with:
+          github-token: ${{ secrets.BLOGS_PUBLISHER_TOKEN }}
+          source-repository: ${{ env.SOURCE_REPOSITORY }}
+          source-run-id: ${{ env.SOURCE_RUN_ID }}
+          artifact-name: site-cmdrgarud-blog

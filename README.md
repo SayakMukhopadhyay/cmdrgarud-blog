@@ -8,7 +8,7 @@ The authoritative Astro source is [`apps/cmdrgarud-blog`](https://github.com/Say
 
 The Blogs monorepo validates and builds the application once, uploads `site-cmdrgarud-blog` as an immutable workflow artifact, and dispatches this repository's deployment workflow with the exact source workflow run ID.
 
-The destination workflow downloads that fixed artifact from `SayakMukhopadhyay/blogs`, validates it, repackages it as a GitHub Pages artifact, and deploys it without checking out this repository, installing dependencies, rebuilding Astro, committing, or pushing.
+The destination workflow allowlists that source and artifact before `deploy-pages-artifact@v1` downloads, validates, repackages, and deploys it. `BLOGS_PUBLISHER_TOKEN` is used only to read the private source artifact; Pages configuration and deployment use this repository's job-scoped `github.token`. The workflow does not check out this repository, install dependencies, rebuild Astro, commit, or push.
 
 A manual deployment requires the source Blogs workflow run ID. The corresponding source artifact must still be within its retention period.
 
